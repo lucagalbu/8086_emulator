@@ -33,3 +33,6 @@ personal_notes/**
 *.exe
 *.out
 *.app
+
+# Builds
+build/**
