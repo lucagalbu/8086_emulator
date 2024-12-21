@@ -6,11 +6,11 @@ uint16_t Registers::getFullBits(uint16_t reg16) const noexcept
 {
     return reg16 & 0xFFFF;
 }
-uint16_t Registers::getLowBits(uint16_t reg16) const noexcept
+uint8_t Registers::getLowBits(uint16_t reg16) const noexcept
 {
     return reg16 & 0x00FF;
 }
-uint16_t Registers::getHighBits(uint16_t reg16) const noexcept
+uint8_t Registers::getHighBits(uint16_t reg16) const noexcept
 {
     return (reg16 & 0xFF00) >> 8;
 }
@@ -18,11 +18,11 @@ void Registers::setFullBits(uint16_t value, uint16_t &reg16) noexcept
 {
     reg16 = value & 0xFFFF;
 }
-void Registers::setLowBits(uint16_t value, uint16_t &reg16) noexcept
+void Registers::setLowBits(uint8_t value, uint16_t &reg16) noexcept
 {
     reg16 = (value & 0xFF) | (getHighBits(reg16) << 8);
 }
-void Registers::setHighBits(uint16_t value, uint16_t &reg16) noexcept
+void Registers::setHighBits(uint8_t value, uint16_t &reg16) noexcept
 {
     reg16 = ((value & 0xFF) << 8) | getLowBits(reg16);
 }
@@ -32,11 +32,11 @@ uint16_t Registers::AX() const noexcept
 {
     return getFullBits(_AX);
 }
-uint16_t Registers::AH() const noexcept
+uint8_t Registers::AH() const noexcept
 {
     return getHighBits(_AX);
 }
-uint16_t Registers::AL() const noexcept
+uint8_t Registers::AL() const noexcept
 {
     return getLowBits(_AX);
 }
@@ -44,11 +44,11 @@ void Registers::AX(uint16_t value) noexcept
 {
     setFullBits(value, _AX);
 }
-void Registers::AH(uint16_t value) noexcept
+void Registers::AH(uint8_t value) noexcept
 {
     setHighBits(value, _AX);
 }
-void Registers::AL(uint16_t value) noexcept
+void Registers::AL(uint8_t value) noexcept
 {
     setLowBits(value, _AX);
 }
@@ -57,11 +57,11 @@ uint16_t Registers::BX() const noexcept
 {
     return getFullBits(_BX);
 }
-uint16_t Registers::BH() const noexcept
+uint8_t Registers::BH() const noexcept
 {
     return getHighBits(_BX);
 }
-uint16_t Registers::BL() const noexcept
+uint8_t Registers::BL() const noexcept
 {
     return getLowBits(_BX);
 }
@@ -69,11 +69,11 @@ void Registers::BX(uint16_t value) noexcept
 {
     setFullBits(value, _BX);
 }
-void Registers::BH(uint16_t value) noexcept
+void Registers::BH(uint8_t value) noexcept
 {
     setHighBits(value, _BX);
 }
-void Registers::BL(uint16_t value) noexcept
+void Registers::BL(uint8_t value) noexcept
 {
     setLowBits(value, _BX);
 }
@@ -82,11 +82,11 @@ uint16_t Registers::CX() const noexcept
 {
     return getFullBits(_CX);
 }
-uint16_t Registers::CH() const noexcept
+uint8_t Registers::CH() const noexcept
 {
     return getHighBits(_CX);
 }
-uint16_t Registers::CL() const noexcept
+uint8_t Registers::CL() const noexcept
 {
     return getLowBits(_CX);
 }
@@ -94,11 +94,11 @@ void Registers::CX(uint16_t value) noexcept
 {
     setFullBits(value, _CX);
 }
-void Registers::CH(uint16_t value) noexcept
+void Registers::CH(uint8_t value) noexcept
 {
     setHighBits(value, _CX);
 }
-void Registers::CL(uint16_t value) noexcept
+void Registers::CL(uint8_t value) noexcept
 {
     setLowBits(value, _CX);
 }
@@ -107,11 +107,11 @@ uint16_t Registers::DX() const noexcept
 {
     return getFullBits(_DX);
 }
-uint16_t Registers::DH() const noexcept
+uint8_t Registers::DH() const noexcept
 {
     return getHighBits(_DX);
 }
-uint16_t Registers::DL() const noexcept
+uint8_t Registers::DL() const noexcept
 {
     return getLowBits(_DX);
 }
@@ -119,11 +119,11 @@ void Registers::DX(uint16_t value) noexcept
 {
     setFullBits(value, _DX);
 }
-void Registers::DH(uint16_t value) noexcept
+void Registers::DH(uint8_t value) noexcept
 {
     setHighBits(value, _DX);
 }
-void Registers::DL(uint16_t value) noexcept
+void Registers::DL(uint8_t value) noexcept
 {
     setLowBits(value, _DX);
 }

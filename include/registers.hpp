@@ -14,29 +14,29 @@ private:
 
     // Utilities
     uint16_t getFullBits(uint16_t reg16) const noexcept;
-    uint16_t getLowBits(uint16_t reg16) const noexcept;
-    uint16_t getHighBits(uint16_t reg16) const noexcept;
+    uint8_t getLowBits(uint16_t reg16) const noexcept;
+    uint8_t getHighBits(uint16_t reg16) const noexcept;
     void setFullBits(uint16_t value, uint16_t &reg16) noexcept;
-    void setLowBits(uint16_t value, uint16_t &reg16) noexcept;
-    void setHighBits(uint16_t value, uint16_t &reg16) noexcept;
+    void setLowBits(uint8_t value, uint16_t &reg16) noexcept;
+    void setHighBits(uint8_t value, uint16_t &reg16) noexcept;
 
 public:
     // Getters
     uint16_t AX() const noexcept;
-    uint16_t AH() const noexcept;
-    uint16_t AL() const noexcept;
+    uint8_t AH() const noexcept;
+    uint8_t AL() const noexcept;
 
     uint16_t BX() const noexcept;
-    uint16_t BH() const noexcept;
-    uint16_t BL() const noexcept;
+    uint8_t BH() const noexcept;
+    uint8_t BL() const noexcept;
 
     uint16_t CX() const noexcept;
-    uint16_t CH() const noexcept;
-    uint16_t CL() const noexcept;
+    uint8_t CH() const noexcept;
+    uint8_t CL() const noexcept;
 
     uint16_t DX() const noexcept;
-    uint16_t DH() const noexcept;
-    uint16_t DL() const noexcept;
+    uint8_t DH() const noexcept;
+    uint8_t DL() const noexcept;
 
     uint16_t SP() const noexcept;
     uint16_t SI() const noexcept;
@@ -52,20 +52,20 @@ public:
 
     // Setters
     void AX(uint16_t value) noexcept;
-    void AH(uint16_t value) noexcept;
-    void AL(uint16_t value) noexcept;
+    void AH(uint8_t value) noexcept;
+    void AL(uint8_t value) noexcept;
 
     void BX(uint16_t value) noexcept;
-    void BH(uint16_t value) noexcept;
-    void BL(uint16_t value) noexcept;
+    void BH(uint8_t value) noexcept;
+    void BL(uint8_t value) noexcept;
 
     void CX(uint16_t value) noexcept;
-    void CH(uint16_t value) noexcept;
-    void CL(uint16_t value) noexcept;
+    void CH(uint8_t value) noexcept;
+    void CL(uint8_t value) noexcept;
 
     void DX(uint16_t value) noexcept;
-    void DH(uint16_t value) noexcept;
-    void DL(uint16_t value) noexcept;
+    void DH(uint8_t value) noexcept;
+    void DL(uint8_t value) noexcept;
 
     void SP(uint16_t value) noexcept;
     void SI(uint16_t value) noexcept;
