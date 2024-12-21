@@ -1,81 +1,83 @@
 #ifndef __REGISTERS
 #define __REGISTERS
 
+#include <cstdint>
+
 class Registers
 {
 private:
     // Registers
-    int _AX = 0, _BX = 0, _CX = 0, _DX = 0;
-    int _SP = 0, _SI = 0, _DI = 0, _BP = 0;
-    int _CS = 0, _SS = 0, _DS = 0, _ES = 0;
-    int _IP = 0;
+    uint16_t _AX = 0, _BX = 0, _CX = 0, _DX = 0;
+    uint16_t _SP = 0, _SI = 0, _DI = 0, _BP = 0;
+    uint16_t _CS = 0, _SS = 0, _DS = 0, _ES = 0;
+    uint16_t _IP = 0;
 
     // Utilities
-    int getFullBits(int reg16) const noexcept;
-    int getLowBits(int reg16) const noexcept;
-    int getHighBits(int reg16) const noexcept;
-    void setFullBits(int value, int &reg16) noexcept;
-    void setLowBits(int value, int &reg16) noexcept;
-    void setHighBits(int value, int &reg16) noexcept;
+    uint16_t getFullBits(uint16_t reg16) const noexcept;
+    uint16_t getLowBits(uint16_t reg16) const noexcept;
+    uint16_t getHighBits(uint16_t reg16) const noexcept;
+    void setFullBits(uint16_t value, uint16_t &reg16) noexcept;
+    void setLowBits(uint16_t value, uint16_t &reg16) noexcept;
+    void setHighBits(uint16_t value, uint16_t &reg16) noexcept;
 
 public:
     // Getters
-    int AX() const noexcept;
-    int AH() const noexcept;
-    int AL() const noexcept;
+    uint16_t AX() const noexcept;
+    uint16_t AH() const noexcept;
+    uint16_t AL() const noexcept;
 
-    int BX() const noexcept;
-    int BH() const noexcept;
-    int BL() const noexcept;
+    uint16_t BX() const noexcept;
+    uint16_t BH() const noexcept;
+    uint16_t BL() const noexcept;
 
-    int CX() const noexcept;
-    int CH() const noexcept;
-    int CL() const noexcept;
+    uint16_t CX() const noexcept;
+    uint16_t CH() const noexcept;
+    uint16_t CL() const noexcept;
 
-    int DX() const noexcept;
-    int DH() const noexcept;
-    int DL() const noexcept;
+    uint16_t DX() const noexcept;
+    uint16_t DH() const noexcept;
+    uint16_t DL() const noexcept;
 
-    int SP() const noexcept;
-    int SI() const noexcept;
-    int DI() const noexcept;
-    int BP() const noexcept;
+    uint16_t SP() const noexcept;
+    uint16_t SI() const noexcept;
+    uint16_t DI() const noexcept;
+    uint16_t BP() const noexcept;
 
-    int CS() const noexcept;
-    int SS() const noexcept;
-    int DS() const noexcept;
-    int ES() const noexcept;
+    uint16_t CS() const noexcept;
+    uint16_t SS() const noexcept;
+    uint16_t DS() const noexcept;
+    uint16_t ES() const noexcept;
 
-    int IP() const noexcept;
+    uint16_t IP() const noexcept;
 
     // Setters
-    void AX(int value) noexcept;
-    void AH(int value) noexcept;
-    void AL(int value) noexcept;
+    void AX(uint16_t value) noexcept;
+    void AH(uint16_t value) noexcept;
+    void AL(uint16_t value) noexcept;
 
-    void BX(int value) noexcept;
-    void BH(int value) noexcept;
-    void BL(int value) noexcept;
+    void BX(uint16_t value) noexcept;
+    void BH(uint16_t value) noexcept;
+    void BL(uint16_t value) noexcept;
 
-    void CX(int value) noexcept;
-    void CH(int value) noexcept;
-    void CL(int value) noexcept;
+    void CX(uint16_t value) noexcept;
+    void CH(uint16_t value) noexcept;
+    void CL(uint16_t value) noexcept;
 
-    void DX(int value) noexcept;
-    void DH(int value) noexcept;
-    void DL(int value) noexcept;
+    void DX(uint16_t value) noexcept;
+    void DH(uint16_t value) noexcept;
+    void DL(uint16_t value) noexcept;
 
-    void SP(int value) noexcept;
-    void SI(int value) noexcept;
-    void DI(int value) noexcept;
-    void BP(int value) noexcept;
+    void SP(uint16_t value) noexcept;
+    void SI(uint16_t value) noexcept;
+    void DI(uint16_t value) noexcept;
+    void BP(uint16_t value) noexcept;
 
-    void CS(int value) noexcept;
-    void SS(int value) noexcept;
-    void DS(int value) noexcept;
-    void ES(int value) noexcept;
+    void CS(uint16_t value) noexcept;
+    void SS(uint16_t value) noexcept;
+    void DS(uint16_t value) noexcept;
+    void ES(uint16_t value) noexcept;
 
-    void IP(int value) noexcept;
+    void IP(uint16_t value) noexcept;
 };
 
 #endif
