@@ -24,12 +24,15 @@ enable_testing()
 add_executable(Emulator
     main.cpp 
     src/registers.cpp
+    src/memory.cpp
 )
 
 # Add the test executable
 add_executable(Tests
     tests/registers.cpp
+    tests/memory.cpp
     src/registers.cpp
+    src/memory.cpp
 )
 target_link_libraries(Tests GTest::gtest_main)
 
