@@ -22,6 +22,9 @@ private:
 
 public:
     // Getters
+    uint8_t getRegister8(uint8_t reg) noexcept;
+    uint16_t getRegister16(uint8_t reg) noexcept;
+
     uint16_t AX() const noexcept;
     uint8_t AH() const noexcept;
     uint8_t AL() const noexcept;
@@ -51,6 +54,9 @@ public:
     uint16_t IP() const noexcept;
 
     // Setters
+    void setRegister8(uint8_t value, uint8_t reg_code) noexcept;
+    void setRegister16(uint16_t value, uint8_t reg_code) noexcept;
+
     void AX(uint16_t value) noexcept;
     void AH(uint8_t value) noexcept;
     void AL(uint8_t value) noexcept;

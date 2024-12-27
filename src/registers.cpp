@@ -1,4 +1,6 @@
 #include <cstdint>
+#include <iostream>
+
 #include "../include/registers.hpp"
 
 // Private
@@ -28,6 +30,136 @@ void Registers::setHighBits(uint8_t value, uint16_t &reg16) noexcept
 }
 
 // Public
+void Registers::setRegister8(uint8_t value, uint8_t reg_code) noexcept
+{
+    switch (reg_code & 0b00000111)
+    {
+    case 0b000:
+        setLowBits(value, _AX);
+        break;
+    case 0b001:
+        setLowBits(value, _CX);
+        break;
+    case 0b010:
+        setLowBits(value, _DX);
+        break;
+    case 0b011:
+        setLowBits(value, _BX);
+        break;
+    case 0b100:
+        setHighBits(value, _AX);
+        break;
+    case 0b101:
+        setHighBits(value, _CX);
+        break;
+    case 0b110:
+        setHighBits(value, _DX);
+        break;
+    case 0b111:
+        setHighBits(value, _BX);
+        break;
+    }
+}
+
+void Registers::setRegister16(uint16_t value, uint8_t reg_code) noexcept
+{
+    switch (reg_code & 0b00000111)
+    {
+    case 0b000:
+        setFullBits(value, _AX);
+        break;
+    case 0b001:
+        setFullBits(value, _CX);
+        break;
+    case 0b010:
+        setFullBits(value, _DX);
+        break;
+    case 0b011:
+        setFullBits(value, _BX);
+        break;
+    case 0b100:
+        setFullBits(value, _SP);
+        break;
+    case 0b101:
+        setFullBits(value, _BP);
+        break;
+    case 0b110:
+        setFullBits(value, _SI);
+        break;
+    case 0b111:
+        setFullBits(value, _DI);
+        break;
+    }
+}
+
+uint8_t Registers::getRegister8(uint8_t reg_code) noexcept
+{
+    switch (reg_code & 0b00000111)
+    {
+    case 0b000:
+        return getLowBits(_AX);
+        break;
+    case 0b001:
+        return getLowBits(_CX);
+        break;
+    case 0b010:
+        return getLowBits(_DX);
+        break;
+    case 0b011:
+        return getLowBits(_BX);
+        break;
+    case 0b100:
+        return getHighBits(_AX);
+        break;
+    case 0b101:
+        return getHighBits(_CX);
+        break;
+    case 0b110:
+        return getHighBits(_DX);
+        break;
+    case 0b111:
+        return getHighBits(_BX);
+        break;
+    }
+
+    std::cerr << "Register not recognized" << std::endl;
+    std::exit(0);
+}
+
+uint16_t Registers::getRegister16(uint8_t reg_code) noexcept
+{
+    switch (reg_code & 0b00000111)
+    {
+    case 0b000:
+        getFullBits(_AX);
+        break;
+    case 0b001:
+        getFullBits(_CX);
+        break;
+    case 0b010:
+        getFullBits(_DX);
+        break;
+    case 0b011:
+        getFullBits(_BX);
+        break;
+    case 0b100:
+        getFullBits(_SP);
+        break;
+    case 0b101:
+        getFullBits(_BP);
+        break;
+    case 0b110:
+        getFullBits(_SI);
+        break;
+    case 0b111:
+        getFullBits(_DI);
+        break;
+    }
+
+    std::cerr << "Register not recognized" << std::endl;
+    std::exit(0);
+}
+
 uint16_t Registers::AX() const noexcept
 {
     return getFullBits(_AX);
