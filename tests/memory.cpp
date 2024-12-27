@@ -4,7 +4,7 @@
 TEST(ClassMemory, setByte)
 {
     Memory memory;
-    memory.set(0x1234, 0x0022, std::uint8_t(0x16));
+    memory.setByte(0x1234, 0x0022, std::uint8_t(0x16));
 
     EXPECT_EQ(memory.get(0x12362), 0x16);
 }
@@ -12,7 +12,7 @@ TEST(ClassMemory, setByte)
 TEST(ClassMemory, setWord)
 {
     Memory memory;
-    memory.set(0x1234, 0x0022, std::uint16_t(0x1617));
+    memory.setWord(0x1234, 0x0022, std::uint16_t(0x1617));
 
     EXPECT_EQ(memory.get(0x12362), 0x17);
     EXPECT_EQ(memory.get(0x12363), 0x16);

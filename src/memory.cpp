@@ -22,13 +22,13 @@ void Memory::load(uint16_t segment, uint16_t offset, std::vector<uint8_t> data)
 }
 
 // Setters
-void Memory::set(uint16_t segment, uint16_t offset, uint8_t value)
+void Memory::setByte(uint16_t segment, uint16_t offset, uint8_t value)
 {
     uint32_t address = computeAddress(segment, offset);
     _memory[address] = value;
 }
 
-void Memory::set(uint16_t segment, uint16_t offset, uint16_t value)
+void Memory::setWord(uint16_t segment, uint16_t offset, uint16_t value)
 {
     uint32_t address = computeAddress(segment, offset);
     uint8_t value_low = value & 0x00FF;
@@ -40,10 +40,23 @@ void Memory::set(uint16_t segment, uint16_t offset, uint16_t value)
 }
 
 // Getters
-uint8_t Memory::get(uint16_t segment, uint16_t offset) const
+uint8_t Memory::getByte(uint16_t segment, uint16_t offset) const
 {
     uint32_t address = computeAddress(segment, offset);
     return _memory[address];
+}
+
+uint16_t Memory::getWord(uint16_t segment, uint16_t offset) const
+{
+    uint32_t address = computeAddress(segment, offset);
+    uint8_t byte1 = _memory[address];
+    offset++;
+    address = computeAddress(segment, offset);
+    uint8_t byte2 = _memory[address];
+
+    // Words are stored in reverse order, according to Intel standard
+    uint16_t word = (byte2 << 8) | byte1;
+    return word;
 }
 
 uint8_t Memory::get(uint32_t address) const
