@@ -10,7 +10,7 @@ private:
     uint32_t computeAddress(uint16_t segment, uint16_t offset) const noexcept;
 
 public:
-    Memory();
+    explicit Memory();
     void load(uint16_t segment, uint16_t offset, std::vector<uint8_t> data);
 
     // Setters
