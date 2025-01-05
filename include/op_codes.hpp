@@ -30,6 +30,9 @@ private:
     // JUMPS
     void jae(uint8_t currentByte);
 
+    // Logic
+    void xorReg(uint8_t currentByte);
+
     // Others
     void xchgRegMemWithReg(uint8_t currentByte);
 

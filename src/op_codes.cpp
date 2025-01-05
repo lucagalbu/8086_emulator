@@ -29,6 +29,8 @@ void OpCodes::exec(int num_instruction)
             cmpImmediateAcc(instruction);
         else if (instruction == 0b01110011)
             jae(instruction);
+        else if ((instruction & 0b11111100) == 0b00110000)
+            xorReg(instruction);
         else
         {
             std::cerr << "Unknown instruction " << int(instruction) << std::endl;
@@ -127,4 +129,32 @@ void OpCodes::jae(uint8_t currentByte)
     uint8_t offset = fetchNextByte();
     if (_flags.CF() == 0 || _flags.ZF() == 1)
         _registers.IP(_registers.IP() + offset);
+}
+
+void OpCodes::xorReg(uint8_t currentByte)
+{
+    uint8_t d = currentByte & 0b00000010;
+    uint8_t w = currentByte & 0b00000001;
+    uint8_t byte_2 = fetchNextByte();
+    auto [mod, reg, rm] = getModRegRm(byte_2);
+
+    if (mod != 0b11)
+    {
+        std::cerr << "xorReg with mod != 0b11 not yet supported" << std::endl;
+        std::exit(1);
+    }
+
+    uint8_t dst = (d == 0) ? rm : reg;
+    switch (w)
+    {
+    case 0b00:
+        _registers.setRegister8(_registers.getRegister8(rm) ^ _registers.getRegister8(reg), dst);
+        break;
+    case 0b01:
+        _registers.setRegister16(_registers.getRegister16(rm) ^ _registers.getRegister16(reg), dst);
+        break;
+    default:
+        std::cerr << "xorReg: parmater w not recognized" << std::endl;
+        std::exit(1);
+    }
 }
