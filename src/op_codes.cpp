@@ -1,5 +1,6 @@
 #include <iostream>
 #include <bit>
+#include <array>
 #include "../include/op_codes.hpp"
 
 void OpCodes::exec(int num_instruction)
@@ -52,6 +53,15 @@ uint16_t OpCodes::fetchNextWord() const noexcept
     return instruction;
 }
 
+std::array<uint8_t, 3> OpCodes::getModRegRm(uint8_t byte) const noexcept
+{
+    uint8_t mod = (byte >> 6) & 0b00000011;
+    uint8_t reg = (byte >> 3) & 0b00000111;
+    uint8_t rm = byte & 0b00000111;
+
+    return {mod, reg, rm};
+}
+
 void OpCodes::executeInterrrupt(uint8_t currentByte)
 {
     uint8_t int_code = fetchNextByte();
@@ -83,9 +93,7 @@ void OpCodes::xchgRegMemWithReg(uint8_t currentByte)
 {
     uint8_t w = currentByte & 0b00000001;
     uint8_t byte_2 = fetchNextByte();
-    uint8_t mod = (byte_2 >> 6) & 0b00000011;
-    uint8_t reg = (byte_2 >> 3) & 0b00000111;
-    uint8_t rm = byte_2 & 0b00000111;
+    auto [mod, reg, rm] = getModRegRm(byte_2);
 
     if (w == 0b00000000 && mod == 0b11)
     {

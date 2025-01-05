@@ -17,6 +17,7 @@ private:
     // Utilities
     uint8_t fetchNextByte() const noexcept;
     uint16_t fetchNextWord() const noexcept;
+    std::array<uint8_t, 3> getModRegRm(uint8_t byte) const noexcept;
 
     void executeInterrrupt(uint8_t currentByte);
 
