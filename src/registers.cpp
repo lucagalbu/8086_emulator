@@ -58,6 +58,9 @@ void Registers::setRegister8(uint8_t value, uint8_t reg_code) noexcept
     case 0b111:
         setHighBits(value, _BX);
         break;
+    default:
+        std::cerr << "Register " << int(reg_code) << " not recognized" << std::endl;
+        std::exit(1);
     }
 }
 
@@ -89,6 +92,9 @@ void Registers::setRegister16(uint16_t value, uint8_t reg_code) noexcept
     case 0b111:
         setFullBits(value, _DI);
         break;
+    default:
+        std::cerr << "Register " << int(reg_code) << " not recognized" << std::endl;
+        std::exit(1);
     }
 }
 
@@ -120,10 +126,10 @@ uint8_t Registers::getRegister8(uint8_t reg_code) noexcept
     case 0b111:
         return getHighBits(_BX);
         break;
+    default:
+        std::cerr << "Register " << int(reg_code) << " not recognized" << std::endl;
+        std::exit(1);
     }
-
-    std::cerr << "Register not recognized" << std::endl;
-    std::exit(0);
 }
 
 uint16_t Registers::getRegister16(uint8_t reg_code) noexcept
@@ -131,33 +137,33 @@ uint16_t Registers::getRegister16(uint8_t reg_code) noexcept
     switch (reg_code & 0b00000111)
     {
     case 0b000:
-        getFullBits(_AX);
+        return getFullBits(_AX);
         break;
     case 0b001:
-        getFullBits(_CX);
+        return getFullBits(_CX);
         break;
     case 0b010:
-        getFullBits(_DX);
+        return getFullBits(_DX);
         break;
     case 0b011:
-        getFullBits(_BX);
+        return getFullBits(_BX);
         break;
     case 0b100:
-        getFullBits(_SP);
+        return getFullBits(_SP);
         break;
     case 0b101:
-        getFullBits(_BP);
+        return getFullBits(_BP);
         break;
     case 0b110:
-        getFullBits(_SI);
+        return getFullBits(_SI);
         break;
     case 0b111:
-        getFullBits(_DI);
+        return getFullBits(_DI);
         break;
+    default:
+        std::cerr << "Register " << int(reg_code) << " not recognized" << std::endl;
+        std::exit(1);
     }
-
-    std::cerr << "Register not recognized" << std::endl;
-    std::exit(0);
 }
 
 uint16_t Registers::AX() const noexcept
