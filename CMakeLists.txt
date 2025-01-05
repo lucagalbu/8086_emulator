@@ -25,14 +25,21 @@ add_executable(Emulator
     main.cpp 
     src/registers.cpp
     src/memory.cpp
+    src/interrupts.cpp
+    src/flags.cpp
+    src/op_codes.cpp
 )
 
 # Add the test executable
 add_executable(Tests
     tests/registers.cpp
     tests/memory.cpp
+    tests/op_codes.cpp
     src/registers.cpp
     src/memory.cpp
+    src/interrupts.cpp
+    src/flags.cpp
+    src/op_codes.cpp
 )
 target_link_libraries(Tests GTest::gtest_main)
 
