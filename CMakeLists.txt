@@ -23,6 +23,7 @@ enable_testing()
 # Add the main project library or executable
 add_executable(Emulator
     main.cpp 
+    src/utilities.cpp
     src/registers.cpp
     src/memory.cpp
     src/interrupts.cpp

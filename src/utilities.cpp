@@ -63,3 +63,18 @@ void printRegisters(const Registers &registers)
     // Restore the cout settings.
     std::cout.flags(old_cout_flags);
 }
+
+void printFlags(const Flags &flags)
+{
+    std::cout << "AF CF OF SF PF ZF DF IF TF" << std::endl;
+    std::cout << (flags.AF() ? "X  " : "   ");
+    std::cout << (flags.CF() ? "X  " : "   ");
+    std::cout << (flags.OF() ? "X  " : "   ");
+    std::cout << (flags.SF() ? "X  " : "   ");
+    std::cout << (flags.PF() ? "X  " : "   ");
+    std::cout << (flags.ZF() ? "X  " : "   ");
+    std::cout << (flags.DF() ? "X  " : "   ");
+    std::cout << (flags.IF() ? "X  " : "   ");
+    std::cout << (flags.TF() ? "X  " : "   ");
+    std::cout << std::endl;
+}
