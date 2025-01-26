@@ -34,3 +34,32 @@ void printMemory(const Memory &memory, uint32_t start, uint32_t end)
     // Restore the cout settings.
     std::cout.flags(old_cout_flags);
 }
+
+void printRegisters(const Registers &registers)
+{
+    // Save current cout settings so that we can restore them at the end.
+    // Modify the settings to fill with 0s and print in upper case
+    // (e.g. 0ABF instead of abf).
+    const auto old_cout_flags = std::cout.flags();
+    std::cout << std::setfill('0') << std::right << std::uppercase << std::hex;
+
+    std::cout << "AX: " << std::setw(4) << registers.AX() << "\t";
+    std::cout << "BX: " << std::setw(4) << registers.BX() << "\t";
+    std::cout << "CX: " << std::setw(4) << registers.CX() << "\t";
+    std::cout << "DX: " << std::setw(4) << registers.DX() << std::endl;
+
+    std::cout << "CS: " << std::setw(4) << registers.CS() << "\t";
+    std::cout << "SS: " << std::setw(4) << registers.SS() << "\t";
+    std::cout << "DS: " << std::setw(4) << registers.DS() << "\t";
+    std::cout << "ES: " << std::setw(4) << registers.ES() << std::endl;
+
+    std::cout << "SP: " << std::setw(4) << registers.SP() << "\t";
+    std::cout << "SI: " << std::setw(4) << registers.SI() << "\t";
+    std::cout << "DI: " << std::setw(4) << registers.DI() << "\t";
+    std::cout << "BP: " << std::setw(4) << registers.BP() << std::endl;
+
+    std::cout << "IP: " << std::setw(4) << registers.IP() << std::endl;
+
+    // Restore the cout settings.
+    std::cout.flags(old_cout_flags);
+}
