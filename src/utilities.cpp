@@ -14,8 +14,8 @@ void printMemory(const Memory &memory, uint32_t start, uint32_t end)
     // Save current cout settings so that we can restore them at the end.
     // Modify the settings to fill with 0s and print in upper case
     // (e.g. 0F instead of f).
-    const auto old_cout_flags = std::cout.flags();
-    std::cout << std::setfill('0') << std::right << std::uppercase << std::hex;
+    const auto old_cout_flags = std::cerr.flags();
+    std::cerr << std::setfill('0') << std::right << std::uppercase << std::hex;
 
     // Print the memory in lines of 0x10 bytes. Prepend every line
     // with the address.
@@ -24,15 +24,15 @@ void printMemory(const Memory &memory, uint32_t start, uint32_t end)
         if (offset % 0x10 == 0)
         {
             // Print a string with the current address.
-            std::cout << std::endl
+            std::cerr << std::endl
                       << std::setw(5) << offset << "  ";
         }
-        std::cout << std::setw(2) << int(memory.get(offset)) << " ";
+        std::cerr << std::setw(2) << int(memory.get(offset)) << " ";
     }
-    std::cout << std::endl;
+    std::cerr << std::endl;
 
     // Restore the cout settings.
-    std::cout.flags(old_cout_flags);
+    std::cerr.flags(old_cout_flags);
 }
 
 void printRegisters(const Registers &registers)
@@ -40,41 +40,41 @@ void printRegisters(const Registers &registers)
     // Save current cout settings so that we can restore them at the end.
     // Modify the settings to fill with 0s and print in upper case
     // (e.g. 0ABF instead of abf).
-    const auto old_cout_flags = std::cout.flags();
-    std::cout << std::setfill('0') << std::right << std::uppercase << std::hex;
+    const auto old_cout_flags = std::cerr.flags();
+    std::cerr << std::setfill('0') << std::right << std::uppercase << std::hex;
 
-    std::cout << "AX: " << std::setw(4) << registers.AX() << "\t";
-    std::cout << "BX: " << std::setw(4) << registers.BX() << "\t";
-    std::cout << "CX: " << std::setw(4) << registers.CX() << "\t";
-    std::cout << "DX: " << std::setw(4) << registers.DX() << std::endl;
+    std::cerr << "AX: " << std::setw(4) << registers.AX() << "\t";
+    std::cerr << "BX: " << std::setw(4) << registers.BX() << "\t";
+    std::cerr << "CX: " << std::setw(4) << registers.CX() << "\t";
+    std::cerr << "DX: " << std::setw(4) << registers.DX() << std::endl;
 
-    std::cout << "CS: " << std::setw(4) << registers.CS() << "\t";
-    std::cout << "SS: " << std::setw(4) << registers.SS() << "\t";
-    std::cout << "DS: " << std::setw(4) << registers.DS() << "\t";
-    std::cout << "ES: " << std::setw(4) << registers.ES() << std::endl;
+    std::cerr << "CS: " << std::setw(4) << registers.CS() << "\t";
+    std::cerr << "SS: " << std::setw(4) << registers.SS() << "\t";
+    std::cerr << "DS: " << std::setw(4) << registers.DS() << "\t";
+    std::cerr << "ES: " << std::setw(4) << registers.ES() << std::endl;
 
-    std::cout << "SP: " << std::setw(4) << registers.SP() << "\t";
-    std::cout << "SI: " << std::setw(4) << registers.SI() << "\t";
-    std::cout << "DI: " << std::setw(4) << registers.DI() << "\t";
-    std::cout << "BP: " << std::setw(4) << registers.BP() << std::endl;
+    std::cerr << "SP: " << std::setw(4) << registers.SP() << "\t";
+    std::cerr << "SI: " << std::setw(4) << registers.SI() << "\t";
+    std::cerr << "DI: " << std::setw(4) << registers.DI() << "\t";
+    std::cerr << "BP: " << std::setw(4) << registers.BP() << std::endl;
 
-    std::cout << "IP: " << std::setw(4) << registers.IP() << std::endl;
+    std::cerr << "IP: " << std::setw(4) << registers.IP() << std::endl;
 
     // Restore the cout settings.
-    std::cout.flags(old_cout_flags);
+    std::cerr.flags(old_cout_flags);
 }
 
 void printFlags(const Flags &flags)
 {
-    std::cout << "AF CF OF SF PF ZF DF IF TF" << std::endl;
-    std::cout << (flags.AF() ? "X  " : "   ");
-    std::cout << (flags.CF() ? "X  " : "   ");
-    std::cout << (flags.OF() ? "X  " : "   ");
-    std::cout << (flags.SF() ? "X  " : "   ");
-    std::cout << (flags.PF() ? "X  " : "   ");
-    std::cout << (flags.ZF() ? "X  " : "   ");
-    std::cout << (flags.DF() ? "X  " : "   ");
-    std::cout << (flags.IF() ? "X  " : "   ");
-    std::cout << (flags.TF() ? "X  " : "   ");
-    std::cout << std::endl;
+    std::cerr << "AF CF OF SF PF ZF DF IF TF" << std::endl;
+    std::cerr << (flags.AF() ? "X  " : "   ");
+    std::cerr << (flags.CF() ? "X  " : "   ");
+    std::cerr << (flags.OF() ? "X  " : "   ");
+    std::cerr << (flags.SF() ? "X  " : "   ");
+    std::cerr << (flags.PF() ? "X  " : "   ");
+    std::cerr << (flags.ZF() ? "X  " : "   ");
+    std::cerr << (flags.DF() ? "X  " : "   ");
+    std::cerr << (flags.IF() ? "X  " : "   ");
+    std::cerr << (flags.TF() ? "X  " : "   ");
+    std::cerr << std::endl;
 }
