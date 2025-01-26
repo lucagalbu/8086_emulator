@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "../include/interrupts.hpp"
+#include "../include/exceptions.hpp"
 
 void Interrupts::execute(uint8_t interrupt)
 {
@@ -13,6 +14,8 @@ void Interrupts::execute(uint8_t interrupt)
     case 0x20:
         int20();
         break;
+    default:
+        throw UNKNOWN_INTERRUPT;
     }
 }
 
@@ -41,7 +44,6 @@ void Interrupts::int21()
         break;
     }
     default:
-        std::cerr << "Unrecognized interrupt" << std::endl;
-        std::exit(1);
+        throw UNKNOWN_INTERRUPT;
     }
 }

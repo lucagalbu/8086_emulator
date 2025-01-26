@@ -2,6 +2,7 @@
 #include <bit>
 #include <array>
 #include "../include/op_codes.hpp"
+#include "../include/exceptions.hpp"
 
 void OpCodes::exec(int num_instruction)
 {
@@ -33,8 +34,7 @@ void OpCodes::exec(int num_instruction)
             xorReg(instruction);
         else
         {
-            std::cerr << "Unknown instruction " << int(instruction) << std::endl;
-            std::exit(1);
+            throw UNKNOWN_OP_CODE;
         }
     }
 }
