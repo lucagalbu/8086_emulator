@@ -7,6 +7,8 @@
 class Interrupts
 {
 private:
+    // Version stored as minor first, major last
+    const uint16_t MS_DOS_VERSION = 0x0002;
     Registers &_registers;
     Memory &_memory;
 

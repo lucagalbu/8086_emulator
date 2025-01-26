@@ -26,8 +26,7 @@ void Interrupts::int21()
     switch (_registers.AH())
     {
     case 0x30:
-        _registers.AL(0x01);
-        _registers.AH(0x00);
+        _registers.AX(MS_DOS_VERSION);
         _registers.BH(0x00);
         break;
     case 0x09:
