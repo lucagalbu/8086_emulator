@@ -21,7 +21,7 @@ void Interrupts::execute(uint8_t interrupt)
 
 void Interrupts::int20()
 {
-    std::exit(1);
+    std::exit(0);
 }
 
 void Interrupts::int21()
